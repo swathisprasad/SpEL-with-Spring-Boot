@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
-@PropertySource (name = "employeeProperties", value = "employee.properties")
+@PropertySource (name="employeeProperties", value="employee.properties")
 @ConfigurationProperties
-public class EmployeeConfig {
+public class EmployeeConfig{
 
 
     @Value ("#{'${employee.names}'.split(',')}")
@@ -21,27 +21,27 @@ public class EmployeeConfig {
     @Value ("#{'${employee.names}'.split(',')[0]}")
     private String firstEmployeeName;
 
-    @Value("${employee.type}")
+    @Value ("${employee.type}")
     private List<String> employeeType;
 
-    @Value("#{${employee.age}}")
+    @Value ("#{${employee.age}}")
     private Map<String, Integer> employeeAge;
 
-    @Value("#{${employee.age}.two}")
+    @Value ("#{${employee.age}.two}")
     private String employeeAgeTwo;
 
-    @Value("#{${employee.age}['five'] ?: 30}")
+    @Value ("#{${employee.age}['five'] ?: 30}")
     private Integer ageWithDefaultValue;
 
-    @Value("#{systemProperties['java.home']}")
+    @Value ("#{systemProperties['java.home']}")
     private String javaHome;
 
-    @Value("#{systemProperties['user.dir']}")
+    @Value ("#{systemProperties['user.dir']}")
     private String userDir;
 
 
     @PostConstruct
-    public void afterInitialize() {
+    public void afterInitialize(){
         System.out.println(employeeNames);
         System.out.println(firstEmployeeName);
         System.out.println(employeeType);
